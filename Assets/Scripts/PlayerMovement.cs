@@ -19,6 +19,15 @@ public class PlayerMovement : MonoBehaviour
             SetSpeed();
         }
     }
+
+    private void OnTriggerEnter(Collider collision)
+    {
+        if (collision.gameObject.tag == "Walls")
+        {
+            Debug.Log("You died");
+        }
+    }
+
     private void SetMovement()
     {
 
@@ -46,4 +55,5 @@ public class PlayerMovement : MonoBehaviour
             speed = slowSpeed;
         }
     }
+
 }
