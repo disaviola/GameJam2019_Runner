@@ -7,10 +7,17 @@ public class PlayerMovement : MonoBehaviour
 {
     private Vector3 input, inputPreviousFrame;
     [SerializeField] private float speed = 5f;
+    [SerializeField] private float slowSpeed = 5f;
+    [SerializeField] private float fastSpeed = 10f;
+
 
     void Update()
     {
         SetMovement();
+        if(Input.GetKeyDown("x"))
+        {
+            SetSpeed();
+        }
     }
     private void SetMovement()
     {
@@ -24,5 +31,18 @@ public class PlayerMovement : MonoBehaviour
         input = input.normalized;
         transform.position += input * Time.deltaTime * 8;
         inputPreviousFrame = input;
+    }
+
+    void SetSpeed()
+    {
+        if (speed == slowSpeed)
+        {
+            speed = fastSpeed;
+            return;
+        }
+        else if (speed == fastSpeed)
+        {
+            speed = slowSpeed;
+        }
     }
 }
