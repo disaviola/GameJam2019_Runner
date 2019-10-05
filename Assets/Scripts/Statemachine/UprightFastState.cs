@@ -12,6 +12,8 @@ public class UprightFastState : BaseState
         Debug.Log("UprightFast");
         owner.transform.localScale = new Vector3(1, 1, 1);
         owner.transform.localScale += new Vector3(0, playerHeight, 0);
+        SFXmanager.SFXIntsance.PlaySuck();
+
     }
 
     public override void HandleFixedUpdate()
