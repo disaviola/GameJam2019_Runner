@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        SetMovement();
+        //SetMovement();
         //if(Input.GetKeyDown("x"))
         //{
         //    SetSpeed();
@@ -36,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.tag == "Walls")
         {
-            Debug.Log("You died");
+            //Debug.Log("You died");
         }
     }
 
@@ -72,15 +72,16 @@ public class PlayerMovement : MonoBehaviour
         }
     }
     
-    public void SetSpeedMode(bool isFastInput)
+    public void SetSpeedMode(bool isFastInput, float originalSpeed)
     {
-        if (isFastInput)
+        if (isFastInput == true)
         {
             isFast = true;
         }
         else
         {
             isFast = false;
+            speed = originalSpeed;
         }
     }
 

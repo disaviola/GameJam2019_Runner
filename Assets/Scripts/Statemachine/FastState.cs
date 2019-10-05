@@ -7,9 +7,11 @@ public class FastState : BaseState
     [SerializeField] private float playerWidth = 3.5f;
     public override void Enter()
     {
+        Debug.Log("Fast");
+        owner.transform.localScale = new Vector3(1, 1, 1);
         owner.transform.localScale += new Vector3(playerWidth, 0, 0);
-        owner.movementHandler.SetSpeedMode(true);
-        base.Enter();
+        owner.movementHandler.SetSpeedMode(true, originalSpeed);
+        
     }
 
     public override void HandleFixedUpdate()
@@ -20,7 +22,7 @@ public class FastState : BaseState
 
     public override void HandleUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.X))
+        if (Input.GetKeyDown(KeyCode.C))
         {
             owner.Transition<BaseState>();
         }
