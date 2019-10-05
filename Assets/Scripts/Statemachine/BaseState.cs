@@ -8,12 +8,13 @@ public class BaseState : State
     protected Player owner;
     protected PlayerMovement movementHandler;
     private Vector3 originalScale = new Vector3(1, 1, 1);
-    [SerializeField] protected float originalSpeed = 5f; 
+    [SerializeField] protected float originalSpeed = 5f;
+    
 
     public override void Enter()
     {
         Debug.Log("Base");
-        owner.transform.localScale = originalScale;
+        //owner.transform.localScale = originalScale;
         movementHandler = owner.movementHandler;
         movementHandler.SetSpeedMode(false, originalSpeed);
         
@@ -27,6 +28,14 @@ public class BaseState : State
 
     public override void HandleFixedUpdate()
     {
+        if(owner.transform.localScale.x > 1)
+        {
+            owner.transform.localScale -= new Vector3(3.5f, 0, 0) * 7 * Time.deltaTime;
+        }
+        if(owner.transform.localScale.y > 1)
+        {
+            owner.transform.localScale -= new Vector3(0, 4, 0) * 7 * Time.deltaTime;
+        }
         
         movementHandler.SetMovement();
         base.HandleFixedUpdate();
