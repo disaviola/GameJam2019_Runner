@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Walls
   - Hashtag
+  - Cube
   layers:
   - Default
   - TransparentFX
