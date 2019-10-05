@@ -9,11 +9,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float speed = 5f;
     [SerializeField] private float slowSpeed = 5f;
     [SerializeField] private float fastSpeed = 10f;
+    [SerializeField] private float boostSpeed = 20f;
     [SerializeField] private GameObject player;
     private Vector3 originalScale;
     [SerializeField] private float playerWidth = 3.5f;
     [SerializeField] private MySceneManager SceneManager;
     private bool isFast = false;
+    private bool isBoosted;
 
     private void Start()
     {
@@ -28,9 +30,22 @@ public class PlayerMovement : MonoBehaviour
         //{
         //    SetSpeed();
         //}
+
+
         if (isFast)
         {
+
+            if (isBoosted)
+            {
+                speed = boostSpeed;
+            }
+            else
+            {
+                speed = fastSpeed;
+            }
+
             speed = speed * 1.0008f;
+
         }
     }
 
@@ -74,6 +89,11 @@ public class PlayerMovement : MonoBehaviour
             isFast = false;
             player.transform.localScale = originalScale;
         }
+    }
+
+    public void SetBoost (bool boolean)
+    {
+        isBoosted = boolean;
     }
     
     public void SetSpeedMode(bool isFastInput, float originalSpeed)
