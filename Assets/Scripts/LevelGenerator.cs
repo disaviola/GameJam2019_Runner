@@ -11,6 +11,8 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] private GameObject[] obstacles;
     [SerializeField] private int wallsBuiltBeforeObstacle = 20;
 
+
+    private Color wallColor;
     void Start()
     {
 
@@ -30,15 +32,18 @@ public class LevelGenerator : MonoBehaviour
             if (randomNumber == 1 && -(mainCamera.orthographicSize * 16 / 9) < lastWallAdded.GetComponent<Dimensions>().GetMinX()) //move next wall left
             {
                 lastWallAdded = Instantiate<GameObject>(walls, new Vector2(lastWallAdded.transform.position.x - walls.transform.localScale.x, lastWallAdded.transform.position.y + lastWallAdded.transform.GetComponent<Dimensions>().GetHeight()/2 + walls.transform.localScale.y / 2), Quaternion.identity);
+                RandomWallColor(lastWallAdded);
             }
             else if (randomNumber == 2 && (mainCamera.orthographicSize * 16 / 9) > lastWallAdded.GetComponent<Dimensions>().GetMaxX()) //move next wall right
             {
                 lastWallAdded = Instantiate<GameObject>(walls, new Vector2(lastWallAdded.transform.position.x + walls.transform.localScale.x, lastWallAdded.transform.position.y + lastWallAdded.transform.GetComponent<Dimensions>().GetHeight()/2 + walls.transform.localScale.y/2), Quaternion.identity);
+                RandomWallColor(lastWallAdded);
             }
             else if (wallsBuilt > wallsBuiltBeforeObstacle && randomNumber == 3 && obstacles.Length>0)
             {
                 randomNumber = Random.Range(0, obstacles.Length);
                 lastWallAdded = Instantiate<GameObject>(obstacles[randomNumber], new Vector2(lastWallAdded.transform.position.x, lastWallAdded.transform.position.y + walls.transform.localScale.y/2), Quaternion.identity);
+                RandomWallColor(lastWallAdded);
                 lastWallAdded.transform.position = new Vector2(lastWallAdded.transform.position.x, lastWallAdded.transform.position.y + 6);
                 randomNumber = Random.Range(0, 3);
                 switch (randomNumber)
@@ -60,6 +65,7 @@ public class LevelGenerator : MonoBehaviour
             {
 
                 lastWallAdded = Instantiate<GameObject>(walls, new Vector2(lastWallAdded.transform.position.x , lastWallAdded.transform.position.y + lastWallAdded.transform.GetComponent<Dimensions>().GetHeight()/2 + walls.transform.localScale.y/2), Quaternion.identity);
+                RandomWallColor(lastWallAdded);
             }
             wallsBuilt++;
         }
@@ -73,5 +79,22 @@ public class LevelGenerator : MonoBehaviour
         //        wallsBuilt = 0;
         //    }
         //}
+    }
+
+
+
+    private void RandomWallColor(GameObject wall )
+    {
+
+        Renderer[] renderers ;
+       wallColor = Random.ColorHSV(0, 1, 1, 1, 1, 1, 1, 1);
+
+        renderers = wall.GetComponentsInChildren<Renderer>();
+        foreach (Renderer  ren in renderers)
+        {
+            ren.material.color = wallColor;
+        }
+
+        
     }
 }
