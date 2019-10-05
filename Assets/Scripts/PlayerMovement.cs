@@ -14,11 +14,13 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 originalScale;
     [SerializeField] private float playerWidth = 3.5f;
     [SerializeField] private MySceneManager SceneManager;
+    [SerializeField] private GameObject rockets;
     private bool isFast = false;
     private bool isBoosted;
 
     private void Start()
     {
+
         originalScale = player.transform.localScale;
         
     }
@@ -34,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (isFast)
         {
+            rockets.SetActive(true);
 
             if (isBoosted)
             {
@@ -46,6 +49,10 @@ public class PlayerMovement : MonoBehaviour
 
             speed = speed * 1.0008f;
 
+        }
+        else
+        {
+            rockets.SetActive(false);
         }
     }
 
