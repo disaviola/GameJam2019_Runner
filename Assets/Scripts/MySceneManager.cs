@@ -9,6 +9,8 @@ public class MySceneManager : MonoBehaviour
     [SerializeField] private GameObject dieScreen;
     [SerializeField] private GameObject player;
     [SerializeField] private Text pointText;
+    [SerializeField] private GameObject aboutBox;
+    private bool loaded = false;
 
     public int points = 0;
 
@@ -25,6 +27,20 @@ public class MySceneManager : MonoBehaviour
     public void LoadStartMenu()
     {
         SceneManager.LoadScene(1);
+    }
+
+    public void LoadAbout()
+    {
+        if (loaded)
+        {
+            aboutBox.SetActive(false);
+            loaded = false;
+        }
+        else
+        {
+            loaded = true;
+            aboutBox.SetActive(true);
+        }
     }
 
     public void Die()
