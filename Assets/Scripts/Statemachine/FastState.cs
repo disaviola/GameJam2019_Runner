@@ -11,7 +11,7 @@ public class FastState : BaseState
         owner.transform.localScale = new Vector3(1, 1, 1);
         owner.transform.localScale += new Vector3(playerWidth, 0, 0);
         owner.movementHandler.SetSpeedMode(true, originalSpeed);
-        
+        SFXmanager.SFXIntsance.PlayBoink();
     }
 
     public override void HandleFixedUpdate()
