@@ -13,7 +13,7 @@ public class DeleteWall : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (mainCamera.transform.position.y - transform.position.y > 10f)
+        if (mainCamera.transform.position.y - transform.position.y > mainCamera.orthographicSize * 4)
         {
             Destroy(gameObject);
         }
