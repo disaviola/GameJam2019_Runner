@@ -85,8 +85,16 @@ public class LevelGenerator : MonoBehaviour
 
     private void RandomWallColor(GameObject wall )
     {
-    
+
+        Renderer[] renderers ;
        wallColor = Random.ColorHSV(0, 1, 1, 1, 1, 1, 1, 1);
-        wall.GetComponentInChildren<Renderer>().material.color = wallColor;
+
+        renderers = wall.GetComponentsInChildren<Renderer>();
+        foreach (Renderer  ren in renderers)
+        {
+            ren.material.color = wallColor;
+        }
+
+        
     }
 }
