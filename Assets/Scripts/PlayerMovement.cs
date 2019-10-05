@@ -12,11 +12,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private GameObject player;
     private Vector3 originalScale;
     [SerializeField] private float playerWidth = 3.5f;
+    [SerializeField] private MySceneManager SceneManager;
     private bool isFast = false;
 
     private void Start()
     {
         originalScale = player.transform.localScale;
+        
     }
 
     void Update()
@@ -37,6 +39,8 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.tag == "Walls")
         {
             //Debug.Log("You died");
+
+            SceneManager.Die();
         }
     }
 

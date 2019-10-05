@@ -38,6 +38,10 @@ public class BaseState : State
         {
             owner.Transition<FastState>();
         }
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            owner.Transition<UprightFastState>();
+        }
     }
 
 }
