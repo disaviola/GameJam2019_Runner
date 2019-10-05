@@ -9,7 +9,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float speed = 5f;
     [SerializeField] private float slowSpeed = 5f;
     [SerializeField] private float fastSpeed = 10f;
+    [SerializeField] private GameObject player;
+    private Vector3 originalScale;
+    [SerializeField] private float playerWidth = 3.5f;
 
+    private void Start()
+    {
+        originalScale = player.transform.localScale;
+    }
 
     void Update()
     {
@@ -48,11 +55,13 @@ public class PlayerMovement : MonoBehaviour
         if (speed == slowSpeed)
         {
             speed = fastSpeed;
+            player.transform.localScale += new Vector3(playerWidth, 0, 0);
             return;
         }
         else if (speed == fastSpeed)
         {
             speed = slowSpeed;
+            player.transform.localScale = originalScale;
         }
     }
 
