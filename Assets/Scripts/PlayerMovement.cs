@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private GameObject player;
     private Vector3 originalScale;
     [SerializeField] private float playerWidth = 3.5f;
+    private bool isFast = false;
 
     private void Start()
     {
@@ -21,9 +22,13 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         SetMovement();
-        if(Input.GetKeyDown("x"))
+        //if(Input.GetKeyDown("x"))
+        //{
+        //    SetSpeed();
+        //}
+        if (isFast)
         {
-            SetSpeed();
+            speed = speed * 1.0008f;
         }
     }
 
@@ -35,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void SetMovement()
+    public void SetMovement()
     {
 
         transform.Translate(0f, speed * Time.deltaTime, 0f);
@@ -55,13 +60,27 @@ public class PlayerMovement : MonoBehaviour
         if (speed == slowSpeed)
         {
             speed = fastSpeed;
+            isFast = true;
             player.transform.localScale += new Vector3(playerWidth, 0, 0);
             return;
         }
         else if (speed == fastSpeed)
         {
             speed = slowSpeed;
+            isFast = false;
             player.transform.localScale = originalScale;
+        }
+    }
+    
+    public void SetSpeedMode(bool isFastInput)
+    {
+        if (isFastInput)
+        {
+            isFast = true;
+        }
+        else
+        {
+            isFast = false;
         }
     }
 
