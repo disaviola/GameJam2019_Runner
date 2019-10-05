@@ -13,6 +13,8 @@ public class UprightFastState : BaseState
         owner.transform.localScale = new Vector3(1, 1, 1);
         owner.transform.localScale += new Vector3(0, playerHeight, 0);
         SFXmanager.SFXIntsance.PlaySuck();
+        owner.movementHandler.SetSpeedMode(true, originalSpeed);
+
 
 
     }
