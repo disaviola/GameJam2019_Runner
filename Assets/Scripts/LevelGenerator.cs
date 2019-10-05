@@ -93,6 +93,11 @@ public class LevelGenerator : MonoBehaviour
         foreach (Renderer  ren in renderers)
         {
             ren.material.color = wallColor;
+            if (ren.gameObject.CompareTag("Background"))
+            {
+                wallColor.a = 0.05f;
+                ren.material.color = wallColor;
+            }
         }
 
         

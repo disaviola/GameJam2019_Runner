@@ -11,6 +11,7 @@ public class CameraController : MonoBehaviour
     {
         tempVec3.y = targetTransform.position.y;
         tempVec3.x = this.transform.position.x;
+        tempVec3.z = targetTransform.position.z - 5;
         this.transform.position = tempVec3;
     }
 }

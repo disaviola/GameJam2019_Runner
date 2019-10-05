@@ -23,7 +23,7 @@ public class SFXmanager : MonoBehaviour
             Destroy(gameObject);
 
         }
-
+        
         DontDestroyOnLoad(gameObject);
 
         audioSource = GetComponent<AudioSource>();
