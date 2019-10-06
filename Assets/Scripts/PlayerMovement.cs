@@ -7,9 +7,9 @@ public class PlayerMovement : MonoBehaviour
 {
     private Vector3 input, inputPreviousFrame;
     [SerializeField] private float speed = 5f;
-    [SerializeField] private float slowSpeed = 5f;
-    [SerializeField] private float fastSpeed = 10f;
-    [SerializeField] private float boostSpeed = 20f;
+    [SerializeField] private float slowSpeed;
+    [SerializeField] private float fastSpeed;
+    [SerializeField] private float boostSpeed;
     [SerializeField] private float slowedDownModifier = -1f;
     [SerializeField] private GameObject player;
     private Vector3 originalScale;
@@ -37,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
     {
         ActivateRocketMode();
 
-
+        Debug.Log(speed);
         if (isFast)
         {
             if (isBoosted)
@@ -80,8 +80,6 @@ public class PlayerMovement : MonoBehaviour
         {
             input = Vector3.zero;
         }
-        fastSpeed = speedManager.GetSpeed() +slowSpeed * 2;
-        boostSpeed = speedManager.GetSpeed()+fastSpeed * 2;
         input = input.normalized;
         transform.position += input * Time.deltaTime * 8;
         inputPreviousFrame = input;
@@ -115,11 +113,12 @@ public class PlayerMovement : MonoBehaviour
         if (isFastInput == true)
         {
             isFast = true;
+            speed = fastSpeed;
         }
         else
         {
             isFast = false;
-            speed = originalSpeed;
+            speed = slowSpeed;
         }
     }
 
