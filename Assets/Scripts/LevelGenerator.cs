@@ -29,12 +29,12 @@ public class LevelGenerator : MonoBehaviour
         if (mainCamera.transform.position.y + mainCamera.orthographicSize * 2 - lastWallAdded.transform.position.y > 0.5f)
         {
             randomNumber = Random.Range(1, 4);
-            if (randomNumber == 1 && -(mainCamera.orthographicSize * 16 / 9) < lastWallAdded.GetComponent<Dimensions>().GetMinX()) //move next wall left
+            if (randomNumber == 1 && -(mainCamera.orthographicSize * mainCamera.aspect) < lastWallAdded.GetComponent<Dimensions>().GetMinX()) //move next wall left
             {
                 lastWallAdded = Instantiate<GameObject>(walls, new Vector2(lastWallAdded.transform.position.x - walls.transform.localScale.x, lastWallAdded.transform.position.y + lastWallAdded.transform.GetComponent<Dimensions>().GetHeight()/2 + walls.transform.localScale.y / 2), Quaternion.identity);
                 RandomWallColor(lastWallAdded);
             }
-            else if (randomNumber == 2 && (mainCamera.orthographicSize * 16 / 9) > lastWallAdded.GetComponent<Dimensions>().GetMaxX()) //move next wall right
+            else if (randomNumber == 2 && (mainCamera.orthographicSize * mainCamera.aspect) > lastWallAdded.GetComponent<Dimensions>().GetMaxX()) //move next wall right
             {
                 lastWallAdded = Instantiate<GameObject>(walls, new Vector2(lastWallAdded.transform.position.x + walls.transform.localScale.x, lastWallAdded.transform.position.y + lastWallAdded.transform.GetComponent<Dimensions>().GetHeight()/2 + walls.transform.localScale.y/2), Quaternion.identity);
                 RandomWallColor(lastWallAdded);

@@ -384,7 +384,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedManager: {fileID: 545442511}
-  speedCoef: 1.75
+  speedCoef: 1.54
 --- !u!1 &151941783
 GameObject:
   m_ObjectHideFlags: 0
@@ -1044,7 +1044,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0e47ea125ea2bc4ab98f8d36a0c03b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startSpeed: 3.96
+  startSpeed: 2.9
   step: 0.003
 --- !u!4 &545442512
 Transform:
