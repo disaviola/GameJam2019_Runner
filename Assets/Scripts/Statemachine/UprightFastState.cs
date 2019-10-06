@@ -11,10 +11,10 @@ public class UprightFastState : BaseState
 
     public override void Enter()
     {
-        Debug.Log("UprightFast");
+
         //owner.transform.localScale = new Vector3(1, 1, 1);
         //owner.transform.localScale += new Vector3(0, playerHeight, 0);
-        SFXmanager.SFXIntsance.PlaySuck();
+        //SFXmanager.SFXIntsance.PlaySuck();
         owner.movementHandler.SetSpeedMode(true, originalSpeed);
 
 
@@ -26,7 +26,6 @@ public class UprightFastState : BaseState
         if(!reseted && owner.transform.localScale.x > 1)
         
         {
-            Debug.Log("reseting");
             owner.transform.localScale -= new Vector3(3.5f, 0, 0) * 7 * Time.deltaTime;
         }
         if(owner.transform.localScale == new Vector3(1, 1, 1))

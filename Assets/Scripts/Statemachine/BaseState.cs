@@ -13,7 +13,7 @@ public class BaseState : State
 
     public override void Enter()
     {
-        Debug.Log("Base");
+
         //owner.transform.localScale = originalScale;
         movementHandler = owner.movementHandler;
         movementHandler.SetSpeedMode(false, originalSpeed);

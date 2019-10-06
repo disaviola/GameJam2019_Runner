@@ -19,11 +19,11 @@ public class Enemy : MonoBehaviour
     {
         agent.SetDestination(player.transform.position);
         transform.position = new Vector3(transform.position.x, transform.position.y, 0);
-        if (agent.isOnOffMeshLink && !moveAcrossNavMeshesStarted)
-        {
-            StartCoroutine(MoveAcrossNavMeshLink());
-            moveAcrossNavMeshesStarted = true;
-        }
+        //if (agent.isOnOffMeshLink && !moveAcrossNavMeshesStarted)
+        //{
+        //    StartCoroutine(MoveAcrossNavMeshLink());
+        //    moveAcrossNavMeshesStarted = true;
+        //}
 
     }
 

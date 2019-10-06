@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private GameObject rockets;
     private bool isFast = false;
     private bool isBoosted;
+    [SerializeField] private SpeedManager speedManager;
 
     private void Start()
     {
@@ -27,11 +28,6 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        //SetMovement();
-        //if(Input.GetKeyDown("x"))
-        //{
-        //    SetSpeed();
-        //}
 
 
         if (isFast)
@@ -54,6 +50,7 @@ public class PlayerMovement : MonoBehaviour
         {
             rockets.SetActive(false);
         }
+        Debug.Log(speed);
     }
 
     private void OnTriggerEnter(Collider collision)
@@ -69,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
     public void SetMovement()
     {
 
-        transform.Translate(0f, speed * Time.deltaTime, 0f);
+        transform.Translate(0f, (speed  + speedManager.GetSpeed())* Time.deltaTime, 0f);
         input = new Vector3(Input.GetAxis("Horizontal"), 0.0f, 0.0f);
         if (!Input.anyKey)
         {
@@ -96,6 +93,7 @@ public class PlayerMovement : MonoBehaviour
             isFast = false;
             player.transform.localScale = originalScale;
         }
+
     }
 
     public void SetBoost (bool boolean)
