@@ -130,7 +130,6 @@ public class PlayerMovement : MonoBehaviour
         {
             rockets.SetActive(false);
             uprightRocket.SetActive(true);
-
         }
     }
 
