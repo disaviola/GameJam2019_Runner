@@ -43,7 +43,7 @@ public class FastState : BaseState
         {
             owner.Transition<BaseState>();
         }
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.X))
         {
             owner.Transition<UprightFastState>();
         }

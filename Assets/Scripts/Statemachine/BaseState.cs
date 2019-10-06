@@ -43,11 +43,11 @@ public class BaseState : State
 
     public override void HandleUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.X))
+        if (Input.GetKeyDown(KeyCode.Z))
         {
             owner.Transition<FastState>();
         }
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.X))
         {
             owner.Transition<UprightFastState>();
         }

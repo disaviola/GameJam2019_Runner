@@ -11,6 +11,7 @@ public abstract class StateMachine : MonoBehaviour
     private Dictionary<Type, State> stateDictionary = new Dictionary<Type, State>();
     private State currentState;
     private State lastState;
+    private int stateID = 0;
 
     //Methods
     protected virtual void Awake()
@@ -20,7 +21,6 @@ public abstract class StateMachine : MonoBehaviour
             State instance = Instantiate(state);
             instance.Initialize(this);
             stateDictionary.Add(instance.GetType(), instance);
-
             if (currentState == null)
             {
                 currentState = instance;

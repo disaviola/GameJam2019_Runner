@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class MySceneManager : MonoBehaviour
 {
@@ -11,17 +12,25 @@ public class MySceneManager : MonoBehaviour
     [SerializeField] private Text pointText;
     [SerializeField] private GameObject aboutBox;
     private bool loaded = false;
+    [SerializeField] private TMP_Text text;
+    private bool died;
 
     public int points = 0;
 
     public void FixedUpdate()
     {
+        if (!died)
+        {
+
         points++;
+        text.text = points + "";
+        }
     }
 
     public void LoadScene()
     {
         SceneManager.LoadScene(0);
+        died = false;
     }
 
     public void LoadStartMenu()
@@ -48,5 +57,6 @@ public class MySceneManager : MonoBehaviour
         player.SetActive(false);
         pointText.text = points.ToString();
         dieScreen.SetActive(true);
+        died = true;
     }
 }
