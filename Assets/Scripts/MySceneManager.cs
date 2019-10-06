@@ -23,19 +23,23 @@ public class MySceneManager : MonoBehaviour
         {
 
         points++;
+            if (text != null)
+            {
         text.text = points + "";
+
+            }
         }
     }
 
     public void LoadScene()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
         died = false;
     }
 
     public void LoadStartMenu()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(0);
     }
 
     public void LoadAbout()
@@ -58,5 +62,9 @@ public class MySceneManager : MonoBehaviour
         pointText.text = points.ToString();
         dieScreen.SetActive(true);
         died = true;
+    }
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }
