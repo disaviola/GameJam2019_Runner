@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float slowSpeed = 5f;
     [SerializeField] private float fastSpeed = 10f;
     [SerializeField] private float boostSpeed = 20f;
+    [SerializeField] private float slowedDownModifier = -1f;
     [SerializeField] private GameObject player;
     private Vector3 originalScale;
     [SerializeField] private float playerWidth = 3.5f;
@@ -18,13 +19,16 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private GameObject uprightRocket;
 
     private bool isFast = false;
+    private bool isSlowedDown = false;
     private int rocketMode = 0;
     private bool isBoosted;
     [SerializeField] private SpeedManager speedManager;
 
     private void Start()
     {
-
+        slowSpeed = speedManager.GetStartSpeed();
+        fastSpeed = slowSpeed * 2;
+        boostSpeed = fastSpeed * 2;
         originalScale = player.transform.localScale;
         
     }
@@ -46,8 +50,15 @@ public class PlayerMovement : MonoBehaviour
             }
 
             speed = speed * 1.0008f;
-
         }
+
+
+        //if (isSlowedDown)
+        //{
+        //    speed += slowedDownModifier;
+        //}
+
+
     }
 
     private void OnTriggerEnter(Collider collision)
@@ -137,5 +148,11 @@ public class PlayerMovement : MonoBehaviour
     {
         rocketMode = mode;
     }
+
+    public void SetSlowedDown(bool isSlowed)
+    {
+        isSlowedDown = isSlowed;
+    }
+
 
 }

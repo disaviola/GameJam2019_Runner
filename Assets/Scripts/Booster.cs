@@ -30,7 +30,15 @@ public class Booster : MonoBehaviour
         else
         {
             playerMovement.SetBoost(false);
+        }
 
+        if(rail1 == true && rail2 == false  || rail1 == false && rail2 == true)
+        {
+            playerMovement.SetSlowedDown(true);
+        }
+        else
+        {
+            playerMovement.SetSlowedDown(false);
         }
     }
 
