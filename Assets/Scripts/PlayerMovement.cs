@@ -15,7 +15,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float playerWidth = 3.5f;
     [SerializeField] private MySceneManager SceneManager;
     [SerializeField] private GameObject rockets;
+    [SerializeField] private GameObject uprightRocket;
+
     private bool isFast = false;
+    private int rocketMode = 0;
     private bool isBoosted;
     [SerializeField] private SpeedManager speedManager;
 
@@ -28,12 +31,11 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        ActivateRocketMode();
 
 
         if (isFast)
         {
-            rockets.SetActive(true);
-
             if (isBoosted)
             {
                 speed = boostSpeed;
@@ -46,11 +48,6 @@ public class PlayerMovement : MonoBehaviour
             speed = speed * 1.0008f;
 
         }
-        else
-        {
-            rockets.SetActive(false);
-        }
-        Debug.Log(speed);
     }
 
     private void OnTriggerEnter(Collider collision)
@@ -112,6 +109,34 @@ public class PlayerMovement : MonoBehaviour
             isFast = false;
             speed = originalSpeed;
         }
+    }
+
+    public void ActivateRocketMode()
+    {
+        if (rocketMode == 0)
+        {
+            rockets.SetActive(false);
+            uprightRocket.SetActive(false);
+        }
+
+        if (rocketMode == 1)
+        {
+            rockets.SetActive(true);
+            uprightRocket.SetActive(false);
+
+        }
+
+        if (rocketMode == 2)
+        {
+            rockets.SetActive(false);
+            uprightRocket.SetActive(true);
+
+        }
+    }
+
+    public void SetRocketMode(int mode)
+    {
+        rocketMode = mode;
     }
 
 }

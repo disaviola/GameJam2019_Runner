@@ -17,7 +17,7 @@ public class BaseState : State
         //owner.transform.localScale = originalScale;
         movementHandler = owner.movementHandler;
         movementHandler.SetSpeedMode(false, originalSpeed);
-        
+        owner.movementHandler.SetRocketMode(0);
     }
 
     public override void Initialize(StateMachine owner)

@@ -9,10 +9,11 @@ public class FastState : BaseState
 
     public override void Enter()
     {
-
         //owner.transform.localScale = new Vector3(1, 1, 1);
         //owner.transform.localScale += new Vector3(playerWidth, 0, 0);
         owner.movementHandler.SetSpeedMode(true, originalSpeed);
+        owner.movementHandler.SetRocketMode(1);
+
         //SFXmanager.SFXIntsance.PlayBoink();
     }
 
