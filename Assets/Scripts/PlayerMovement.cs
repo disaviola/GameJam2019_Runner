@@ -80,7 +80,8 @@ public class PlayerMovement : MonoBehaviour
         {
             input = Vector3.zero;
         }
-
+        fastSpeed = speedManager.GetSpeed() +slowSpeed * 2;
+        boostSpeed = speedManager.GetSpeed()+fastSpeed * 2;
         input = input.normalized;
         transform.position += input * Time.deltaTime * 8;
         inputPreviousFrame = input;

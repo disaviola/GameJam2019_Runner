@@ -7,6 +7,7 @@ public class SpeedManager : MonoBehaviour
     private float speed;
     [Range(0.5f, 10)]
     [SerializeField] private float startSpeed;
+    [SerializeField] private float step = 0.003f;
     void Start()
     {
         speed = 0;
@@ -15,7 +16,7 @@ public class SpeedManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        speed += 0.003f;
+        speed += step;
     }
     public float GetSpeed()
     {
